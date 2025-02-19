@@ -117,7 +117,7 @@ class crudactividad
         // bWNpaGVsbGV0b2JhdEB1bmltaS5lZHU correo admin "mcihelletobat@unimi.edu";
         // bWFyaWExMjZAdW5pbWkuZWR1 correo normal maria1265.edu'
 
-
+       
         try {
 
             if (!isset($id) || !isset($correo)) {
@@ -137,15 +137,16 @@ class crudactividad
 
             $row = $result->fetch_assoc();
 
-            // var_dump($row);
-
-
+        
             $usuario = new crudusuario();
 
             $perfil = $usuario->consultarrolusuario($correo);
 
+            // var_dump($row);
+            // exit;
 
-            if ($perfil[0]['borrar'] != 1) { //si el correo no tiene permisos para borrar(no es del admin) saldra este error
+
+            if ($perfil[0]['borrar'] == 0) { //si el correo no tiene permisos para borrar(no es del admin) saldra este error
                 // var_dump($perfil[0]['borrar']);
                 throw new Exception('Usted no tiene permiso para borrar este registro, por favor contacte con el administrador de la aplicacion');
             } else {
@@ -168,7 +169,7 @@ class crudactividad
                 if ($idverificado == null) { //si el id usado ya fue borrado una primera vez o todavia no tiene un registro asignado, arroja este error
                     throw new Exception('El registro de este id ya ha sido borrado o no ha sido creado');
                 } else {
-                    if (($row['correo']) == null) { //si el correo ingresado no existe, arroja este error
+                    if (($row['id_rol']) == null) { //si el correo ingresado no existe, arroja este error
                         throw new Exception('El usuario con el correo ' . $correo . ' no esta registrado.');
                     } else {
 
@@ -210,8 +211,9 @@ class crudactividad
     }
 
 
-    public function actualizaractividad($id, $dato, $correo)
+    public function actualizaractividad($dato, $id, $correo)
     {
+
         try {
 
             if (!isset($id) || !isset($correo)) {

@@ -208,7 +208,7 @@ class crudsubactividad
 
 
 
-    public function actualizarsubactividad($id, $dato, $correo)
+    public function actualizarsubactividad($dato, $id, $correo)
     {
 
 

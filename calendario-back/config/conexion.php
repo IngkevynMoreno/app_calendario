@@ -34,24 +34,4 @@ class conexion
         }
     }
 
-    //esta funcion se invoca para hacer peticiones get
-    public function obtenerDatos($query)
-    {
-        $resultado = $this->conexion->query($query);  // Ejecuta la consulta SQL
-        if ($resultado) {
-
-            return $resultado;  // Retorna el objeto mysqli_result
-        } else {
-            return false;  // Retorna false si hay un error en la consulta
-        }
-
-    }
-
-    //esta funcion la invocaremos cuando necesitemos utilizar peticiones post,put,delete
-    public function afectarDatos($sqlstr)
-    {
-        $this->conexion->query($sqlstr);
-        return $this->conexion->affected_rows; //retorna  las columnas que van a ser afectadas por la consulta
-
-    }
 }

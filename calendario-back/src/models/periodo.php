@@ -95,7 +95,7 @@ class crudperiodo
                 $modalidad = isset($dato['modalidad']) ? $dato['modalidad'] : null;
                 $sede_id = isset($dato['sede_id']) ? $dato['sede_id'] : null;
 
-                $sql = $conexion->test()->prepare("call sp_periodo('insertar', null, '$anio', '$periocidad', '$modalidad', '$sede_id', now(),'$correo')");
+                $sql = $conexion->test()->prepare("call sp_periodo('insertar', null, ?, ? , ? , ?, ?)");
 
                 $sql->bind_param("issis", $anio, $periocidad, $modalidad, $sede_id, $correo);
                 $sql->execute();
@@ -191,11 +191,7 @@ class crudperiodo
 
 
 
-
-
-
-
-    public function actualizarperiodo($id, $dato, $correo) //se puede mandar el id por el endpoint o como variable post en el body
+    public function actualizarperiodo($dato, $id, $correo) //se puede mandar el id por el endpoint o como variable post en el body
     {
         try {
 
@@ -224,8 +220,6 @@ class crudperiodo
 
             } else {
 
-
-                $id = isset($dato['id']) ? $dato['id'] : null;
                 $anio = isset($dato['anio']) ? $dato['anio'] : null;
                 $periocidad = isset($dato['periocidad']) ? $dato['periocidad'] : null;
                 $modalidad = isset($dato['modalidad']) ? $dato['modalidad'] : null;

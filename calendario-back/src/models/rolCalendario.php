@@ -214,7 +214,7 @@ class crudrolCalendario
     }
 
 
-    public function actualizarrolCalendario($id, $dato, $correo)
+    public function actualizarrolCalendario($dato, $id, $correo)
     {
 
 
@@ -246,7 +246,6 @@ class crudrolCalendario
                 throw new Exception('El usuario con el correo ' . $correo . ' no está registrado.');
             } else {
 
-                $id = ($dato['id']);
                 $id_usuario = isset($dato['id_usuario']) ? $dato['id_usuario'] : null;
                 $id_tipoCalendario = isset($dato['id_tipoCalendario']) ? $dato['id_tipoCalendario'] : null;
                 $estado = isset($dato['estado']) ? $dato['estado'] : null;

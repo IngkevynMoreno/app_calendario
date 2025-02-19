@@ -135,7 +135,6 @@ class crudusuario
             $usuario = new crudusuario();
             $perfil = $usuario->consultarrolusuario($correo);
 
-            var_dump($perfil);
 
             if ($row['correo'] == null) { //si el correo ingresado no existe, arroja este error
                 throw new Exception('El usuario con el correo ' . $correo . ' no está registrado.');

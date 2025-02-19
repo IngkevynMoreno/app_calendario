@@ -13,7 +13,7 @@ class crudcalendario
 
         // $correo = 'maria1265.edu'; //el correo debe pedirse como una variable dinamica
 
-        if (isset($correo)) {
+        if (!isset($correo)) {
             $res = array(["error" => "El correo es obligatorio."]);
             echo json_encode($res);
             exit;
@@ -73,7 +73,7 @@ class crudcalendario
         try {
 
             
-        if (isset($correo)) {
+        if (!isset($correo)) {
             $res = array(["error" => "El correo es obligatorio."]);
             echo json_encode($res);
             exit;
@@ -227,7 +227,7 @@ class crudcalendario
     }
 
 
-    public function actualizarcalendario($id, $dato, $correo)
+    public function actualizarcalendario($dato, $id, $correo)
     {
 
 
@@ -256,7 +256,7 @@ class crudcalendario
             if (isset($row['correo']) == null) { // Si el correo ingresado no existe, arroja este error
                 throw new Exception('El usuario con el correo ' . $correo . ' no está registrado.');
             } else {
-                $id = ($dato['id']);
+                // $id = ($dato['id']);
                 $id_usuario = isset($dato['id_usuario']) ? $dato['id_usuario'] : null;
                 $id_rectoria = isset($dato['id_rectoria']) ? $dato['id_rectoria'] : null;
                 $id_sede = isset($dato['id_sede']) ? $dato['id_sede'] : null;
